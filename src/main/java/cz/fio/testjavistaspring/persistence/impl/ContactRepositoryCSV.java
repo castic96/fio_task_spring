@@ -5,6 +5,7 @@ import cz.fio.testjavistaspring.entity.ContactEntity;
 import cz.fio.testjavistaspring.persistence.IContactRepository;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import com.opencsv.CSVWriter;
@@ -64,7 +65,7 @@ public class ContactRepositoryCSV implements IContactRepository {
         String[] fields;
 
         try {
-            fileWriter = new FileWriter(csvFile, true);
+            fileWriter = new FileWriter(csvFile, Charset.forName("Cp1250"), true);
             csvWriter = new CSVWriter(fileWriter);
 
             fields = convertEntityIntoStrArr(newContactEntity);
@@ -96,7 +97,7 @@ public class ContactRepositoryCSV implements IContactRepository {
         List<String[]> existingData;
 
         try {
-            csvReader = new CSVReader(new FileReader(csvFile));
+            csvReader = new CSVReader(new FileReader(csvFile, Charset.forName("Cp1250")));
             existingData = csvReader.readAll();
             csvReader.close();
 
