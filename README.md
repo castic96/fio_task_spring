@@ -1,15 +1,17 @@
-# Read Me First
-The following was discovered as part of building this project:
+# FIO - úkol (Spring verze)
+Tato verze řešení využívá **Spring Framework** a **Spring Boot** k realizaci požadovaného řešení. 
 
-* The JVM level was changed from '11' to '17', review the [JDK Version Range](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions#jdk-version-range) on the wiki for more details.
-* The original package name 'cz.fio.test-javista-spring' is invalid and this project uses 'cz.fio.testjavistaspring' instead.
+Toto řešení jsem rozpadl do více _packages_ z důvodu správného strukturování projektu pro "budoucí rozšiřitelnost a udržovatelnost". Stejně tak jsem použil implementaci závislostí vůči rozhraní (_Dependency Inversion_) a využil jsem injektování závislostí (_Dependency Injection_) prostřednictvím _Spring Framework_.
 
-# Getting Started
+Třídě `cz.fio.StoreContact` ze zadání odpovídá třída `cz.fio.testjavistaspring.service.impl.ContactServiceImpl`, která implementuje rozhraní `cz.fio.testjavistaspring.service.IContactService`. 
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Sestavení a spuštění aplikace
+Aplikaci lze sestavit prostřednictvím `Mavenu` (testovaná verze `3.8.1`) a `JDK 17`. Build a spuštění aplikace lze také realizovat prostřednictvím `Dockeru` a to například následovně:
+1. provést `checkout` projektu z GITu,
+2. spustit `Docker`,
+3. v root složce projektu zadat příkaz přes `cmd`: `docker build -t fio/task .` (pro build aplikace),
+4. v root složce projektu zadat příkaz přes `cmd`: `docker-compose up` (pro spuštění aplikace).
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.0.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.0.5/maven-plugin/reference/html/#build-image)
+Aplikace bude přístupná na adrese: http://localhost:8080/test-javista/
 
+Příkaz pro odstranění docker containeru s aplikací: `docker-compose down`
