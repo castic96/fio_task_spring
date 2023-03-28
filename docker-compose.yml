@@ -1,0 +1,10 @@
+version: '1'
+
+services:
+  app:
+    image: 'fio/task:latest'
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+    container_name: fio-app
